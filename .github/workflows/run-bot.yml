@@ -1,0 +1,33 @@
+name: Deploy Telegram Bot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and run Docker Compose
+        run: |
+          docker-compose up -d
+        env:
+          OWNER_TAG: ${{ secrets.OWNER_TAG }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          API_ID: ${{ secrets.API_ID   }}
+          API_HASH: ${{ secrets.API_HASH }}
