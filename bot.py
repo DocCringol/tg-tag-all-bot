@@ -7,8 +7,13 @@ from telethon.sync import TelegramClient, events
 os.makedirs('logs', exist_ok=True)
 logging.basicConfig(filename='logs/bot.log', level=logging.INFO)
 
+config_file = 'config.ini'
+if not os.path.isfile(config_file):
+    with open(config_file, 'w') as f:
+        f.write("[Bot]\n")
+
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(config_file)
 BotConf = config['Bot']
 
 TOKEN = os.environ.get('BOT_TOKEN')

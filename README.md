@@ -25,4 +25,5 @@ API_HASH = alkdsjf879afukjef29f2uakjsf
 
 ## TODO
 -  Use secrets in docker instead of env
+-  Add persistent database
 -  Translate everything to english (README.md and text.py)
