@@ -25,7 +25,7 @@ jobs:
 
       - name: Build and run Docker Compose
         run: |
-          docker-compose up -d
+          docker-compose up -d --build
         env:
           OWNER_TAG: ${{ secrets.OWNER_TAG }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
