@@ -4,7 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    environment:
+      - OWNER_TAG
+      - BOT_TOKEN
+      - API_ID
+      - API_HASH
     volumes:
       - .:/app
